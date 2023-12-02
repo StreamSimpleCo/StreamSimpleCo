@@ -33,7 +33,6 @@
             background-color: #333;
             color: #fff;
             padding: 10px 0;
-            cursor: pointer; /* Add cursor pointer for indicating it's clickable */
         }
 
         header h1 {
@@ -113,14 +112,14 @@
 
 <body>
     <div class="wrapper">
-        <header onclick="window.location.href='https://streamsimpleco.github.io';">
+        <header>
             <div class="container">
                 <h1>StreamSimple</h1>
                 <nav>
                     <ul>
-                        <li><a href="https://streamsimpleco.github.io/eras_streams" onclick="navigate('#');">Eras Tour Livestreams</a></li>
-                        <li><a href="https://streamsimpleco.github.io/tv" onclick="navigate('#');">Unlimited Movies and TV</a></li>
-                        <li><a href="https://streamsimpleco.github.io/sports" onclick="navigate('#');">Sports Livestreams</a></li>
+                        <li><a href="https://streamsimpleco.github.io/eras_streams">Eras Tour Livestreams</a></li>
+                        <li><a href="https://streamsimpleco.github.io/tv">Unlimited Movies and TV</a></li>
+                        <li><a href="https://streamsimpleco.github.io/sports">Sports Livestreams</a></li>
                     </ul>
                 </nav>
             </div>
@@ -129,7 +128,7 @@
         <section>
             <div class="container">
                 <div class="buttons">
-                     <a href="#" class="button" id="button1">Stream Sports Now!</a>
+                    <a href="#" class="button" id="openIframeButton">Watch Sports Live Now</a>
                 </div>
 
                 <!-- Iframe Container (hidden by default) -->
@@ -149,35 +148,20 @@
         </footer>
     </div>
 
-     <script>
+    <script>
         // JavaScript to open and close fullscreen iframe
-        document.getElementById('button1').addEventListener('click', function (event) {
-            event.preventDefault();
-            openFullscreenIframe('https://www.vipbox.lc/');
-        });
-
-        function openFullscreenIframe(link) {
+        document.getElementById('openIframeButton').addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the default behavior of the anchor link
             var iframeContainer = document.getElementById('fullscreenIframe');
             var iframeContent = document.getElementById('iframeContent');
+            var link = 'https://www.vipbox.lc/football-live'; // Replace with your actual link
 
             iframeContainer.style.display = 'flex';
             iframeContent.src = link;
-        }
+        });
 
         function closeFullscreenIframe(event) {
-            event.preventDefault();
-            var iframeContainer = document.getElementById('fullscreenIframe');
-            var iframeContent = document.getElementById('iframeContent');
-
-            iframeContainer.style.display = 'none';
-            iframeContent.src = '';
-        }
-           iframeContainer.style.display = 'flex';
-            iframeContent.src = link;
-        }
-
-        function closeFullscreenIframe(event) {
-            event.preventDefault();
+            event.preventDefault(); // Prevent the default behavior of the anchor link
             var iframeContainer = document.getElementById('fullscreenIframe');
             var iframeContent = document.getElementById('iframeContent');
 
