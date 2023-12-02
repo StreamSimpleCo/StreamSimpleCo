@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Fullscreen Iframe Generator</title>
+</head>
+<body>
+
+<label for="imdbInput">Enter IMDB ID:</label>
+<input type="text" id="imdbInput" placeholder="Enter IMDB ID">
+
+<label for="seasonInput">Enter Season Number:</label>
+<input type="number" id="seasonInput" placeholder="Season Number">
+
+<label for="episodeInput">Enter Episode Number:</label>
+<input type="number" id="episodeInput" placeholder="Episode Number">
+
+<button onclick="generateIframe()">Generate Fullscreen Iframe</button>
+
+<p>
+    Must find IMDB code? 
+    <a href="#" onclick="openHelpPage()">Click here</a>
+</p>
+
+<div id="iframeContainer"></div>
+
+<script>
+// Function to generate the iframe
+function generateIframe() {
+    // Get the input values
+    var imdbId = document.getElementById('imdbInput').value;
+    var seasonNumber = document.getElementById('seasonInput').value;
+    var episodeNumber = document.getElementById('episodeInput').value;
+
+    // Check if the imdbId is not empty
+    if (imdbId.trim() === "") {
+        alert("Please enter an IMDB ID");
+        return;
+    }
+
+    // Check if the season and episode numbers are not empty
+    if (seasonNumber.trim() === "") {
+        alert("Please enter a Season Number");
+        return;
+    }
+
+    if (episodeNumber.trim() === "") {
+        alert("Please enter an Episode Number");
+        return;
+    }
+
+    // Construct the base URL
+    var baseUrl = 'https://www.2embed.cc/embedtv/';
+
+    // Construct the complete URL
+    var completeUrl = baseUrl + imdbId + '&s=season' + seasonNumber + '&e=episode' + episodeNumber;
+
+    // Create the iframe element
+    var iframe = document.createElement('iframe');
+    iframe.width = '100%'; // Use 100% for full width
+    iframe.height = '100%'; // Use 100% for full height
+    iframe.style.border = 'none'; // Remove border
+
+    // Set the iframe source
+    iframe.src = completeUrl;
+
+    // Clear the previous content in the container
+    document.getElementById('iframeContainer').innerHTML = '';
+
+    // Append the iframe to the container
+    document.getElementById('iframeContainer').appendChild(iframe);
+
+    // Log the complete URL to the console (for debugging)
+    console.log("Complete URL:", completeUrl);
+
+    // Make the iframe fullscreen
+    if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+    } else if (iframe.mozRequestFullScreen) {
+        iframe.mozRequestFullScreen();
+    } else if (iframe.webkitRequestFullscreen) {
+        iframe.webkitRequestFullscreen();
+    } else if (iframe.msRequestFullscreen) {
+        iframe.msRequestFullscreen();
+    }
+}
+
+function openHelpPage() {
+    // Replace 'your_help_page_url' with the actual URL of your help page
+    var helpPageUrl = 'your_help_page_url';
+    window.open(helpPageUrl, '_blank');
+}
+</script>
+
+</body>
+</html>
