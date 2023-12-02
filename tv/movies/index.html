@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Fullscreen Iframe Generator</title>
+</head>
+<body>
+
+<label for="urlInput">Enter Video ID:</label>
+<input type="text" id="urlInput" placeholder="Enter Video ID">
+
+<button onclick="generateFullscreenIframe()">Generate Fullscreen Iframe</button>
+
+<p>
+    Must find IMDB code! Don't know how? 
+    <a href="#" onclick="openHelpPage()">Click here</a>
+</p>
+
+<div id="iframeContainer"></div>
+
+<script>
+function generateFullscreenIframe() {
+    // Get the input value
+    var videoId = document.getElementById('urlInput').value;
+
+    // Check if the videoId is not empty
+    if (videoId.trim() === "") {
+        alert("Please enter a Video ID");
+        return;
+    }
+
+    // Construct the base URL
+    var baseUrl = 'https://www.2embed.cc/embed/';
+
+    // Construct the complete URL
+    var completeUrl = baseUrl + videoId;
+
+    // Create the iframe element
+    var iframe = document.createElement('iframe');
+    iframe.width = '100%'; // Use 100% for full width
+    iframe.height = '100%'; // Use 100% for full height
+    iframe.style.border = 'none'; // Remove border
+
+    // Set the iframe source
+    iframe.src = completeUrl;
+
+    // Clear the previous content in the container
+    document.getElementById('iframeContainer').innerHTML = '';
+
+    // Append the iframe to the container
+    document.getElementById('iframeContainer').appendChild(iframe);
+
+    // Log the complete URL to the console (for debugging)
+    console.log("Complete URL:", completeUrl);
+
+    // Make the iframe fullscreen
+    if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+    } else if (iframe.mozRequestFullScreen) {
+        iframe.mozRequestFullScreen();
+    } else if (iframe.webkitRequestFullscreen) {
+        iframe.webkitRequestFullscreen();
+    } else if (iframe.msRequestFullscreen) {
+        iframe.msRequestFullscreen();
+    }
+}
+
+function openHelpPage() {
+    // Replace 'https://streamsimpleco.github.io/tv/movies/help' with the actual URL of your help page
+    var helpPageUrl = 'your_help_page_url';
+    window.open(helpPageUrl, '_blank');
+}
+</script>
+
+</body>
+</html>
