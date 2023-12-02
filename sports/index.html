@@ -129,7 +129,7 @@
         <section>
             <div class="container">
                 <div class="buttons">
-                     <a href="#" class="button" id="button1">Server 1</a>
+                     <a href="#" class="button" id="button1">Stream Sports Now!</a>
                 </div>
 
                 <!-- Iframe Container (hidden by default) -->
@@ -153,7 +153,7 @@
         // JavaScript to open and close fullscreen iframe
         document.getElementById('button1').addEventListener('click', function (event) {
             event.preventDefault();
-            openFullscreenIframe('http://cricfree.unblckd.pw');
+            openFullscreenIframe('https://www.vipbox.lc/');
         });
 
         function openFullscreenIframe(link) {
@@ -161,6 +161,18 @@
             var iframeContent = document.getElementById('iframeContent');
 
             iframeContainer.style.display = 'flex';
+            iframeContent.src = link;
+        }
+
+        function closeFullscreenIframe(event) {
+            event.preventDefault();
+            var iframeContainer = document.getElementById('fullscreenIframe');
+            var iframeContent = document.getElementById('iframeContent');
+
+            iframeContainer.style.display = 'none';
+            iframeContent.src = '';
+        }
+           iframeContainer.style.display = 'flex';
             iframeContent.src = link;
         }
 
