@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Your existing CSS styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #333; /* Changed text color to dark */
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        .wrapper {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            cursor: pointer; /* Add cursor pointer for indicating it's clickable */
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .buttons {
+            margin-top: 20px;
+            text-align: center; /* Center the buttons horizontally */
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            margin-right: 10px;
+            font-size: 1em;
+        }
+
+        .iframe-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .exit-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: auto; /* Push footer to the bottom */
+        }
+    </style>
+    <title>StreamSimple</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header onclick="window.location.href='https://streamsimpleco.github.io';">
+            <div class="container">
+                <h1>StreamSimple</h1>
+                <nav>
+                    <ul>
+                        <li><a href="https://streamsimpleco.github.io/eras_streams" onclick="navigate('#');">Eras Tour Livestreams</a></li>
+                        <li><a href="https://streamsimpleco.github.io/tv" onclick="navigate('#');">Unlimited Movies and TV</a></li>
+                        <li><a href="https://streamsimpleco.github.io/sports" onclick="navigate('#');">Sports Livestreams</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section>
+            <div class="container">
+                <div class="buttons">
+                     <a href="#" class="button" id="button1">sever 1</a>
+                    <a href="#" class="button" id="button2">sever 2</a>
+                    <a href="#" class="button" id="button3">sever 3</a>
+                    <a href="#" class="button" id="button4">sever 4</a>
+                    <a href="#" class="button" id="button5">sever 5</a>
+                    <a href="#" class="button" id="button6">sever 6</a>
+                    <a href="#" class="button" id="button7">sever 7</a>
+                    <a href="#" class="button" id="button8">sever 8</a>
+                </div>
+
+                <!-- Iframe Container (hidden by default) -->
+                <div class="iframe-container" id="fullscreenIframe">
+                    <iframe id="iframeContent"></iframe>
+                    <a href="#" class="exit-button" onclick="closeFullscreenIframe(event)">Exit</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add more sections and content as needed -->
+
+        <footer>
+            <div class="container">
+                <p>&copy; 2023 StreamSimple. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+     <script>
+        // JavaScript to open and close fullscreen iframe
+        document.getElementById('button1').addEventListener('click', function (event) {
+            event.preventDefault();
+            openFullscreenIframe('https://30d11c0f-23649f29.onionflix.stream/');
+        });
+
+        document.getElementById('button2').addEventListener('click', function (event) {
+            event.preventDefault();
+            openFullscreenIframe('https://e0bf72-79c0c1.rarbg.watch/');
+        });
+
+        document.getElementById('button3').addEventListener('click', function (event) {
+            event.preventDefault();
+            openFullscreenIframe('https://putlocker.boo/');
+        });
+
+        document.getElementById('button4').addEventListener('click', function (event) {
+            event.preventDefault();
+            openFullscreenIframe('https://vumoo.to/');
+        });
+
+        document.getElementById('button5').addEventListener('click', function (event) {
+            event.preventDefault();
+            openFullscreenIframe('https://ww2.123moviesfree.net/');
+        });
+
+        document.getElementById('button6').addEventListener('click', function (event) {
+            event.preventDefault();
+            openFullscreenIframe('https://lookmovie.onl/');
+        });
+
+        document.getElementById('button7').addEventListener('click', function (event) {
+            event.preventDefault();
+            openFullscreenIframe('https://www.azmovies.net/');
+        });
+
+        document.getElementById('button8').addEventListener('click', function (event) {
+            event.preventDefault();
+            openFullscreenIframe('https://ww4.fmovies.co/24/');
+        });
+
+        function openFullscreenIframe(link) {
+            var iframeContainer = document.getElementById('fullscreenIframe');
+            var iframeContent = document.getElementById('iframeContent');
+
+            iframeContainer.style.display = 'flex';
+            iframeContent.src = link;
+        }
+
+        function closeFullscreenIframe(event) {
+            event.preventDefault();
+            var iframeContainer = document.getElementById('fullscreenIframe');
+            var iframeContent = document.getElementById('iframeContent');
+
+            iframeContainer.style.display = 'none';
+            iframeContent.src = '';
+        }
+    </script>
+</body>
+
+</html>
