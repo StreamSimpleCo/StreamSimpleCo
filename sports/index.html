@@ -149,26 +149,35 @@
     </div>
 
     <script>
-        // JavaScript to open and close fullscreen iframe
-        document.getElementById('openIframeButton').addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent the default behavior of the anchor link
-            var iframeContainer = document.getElementById('fullscreenIframe');
-            var iframeContent = document.getElementById('iframeContent');
-            var link = 'https://www.vipbox.lc/football-live'; // Replace with your actual link
+    // JavaScript to open and close fullscreen iframe
+    document.getElementById('openIframeButton').addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default behavior of the anchor link
+        var iframeContainer = document.getElementById('fullscreenIframe');
+        var iframeContent = document.getElementById('iframeContent');
+        var link = 'https://www.vipbox.lc/football-live'; // Replace with your actual link
 
+        // Clear the previous content to prevent flickering
+        iframeContent.src = 'about:blank';
+
+        // Wait a short delay before setting the new source
+        setTimeout(function () {
             iframeContainer.style.display = 'flex';
             iframeContent.src = link;
-        });
+        }, 100);
+    });
 
-        function closeFullscreenIframe(event) {
-            event.preventDefault(); // Prevent the default behavior of the anchor link
-            var iframeContainer = document.getElementById('fullscreenIframe');
-            var iframeContent = document.getElementById('iframeContent');
+    function closeFullscreenIframe(event) {
+        event.preventDefault(); // Prevent the default behavior of the anchor link
+        var iframeContainer = document.getElementById('fullscreenIframe');
+        var iframeContent = document.getElementById('iframeContent');
 
-            iframeContainer.style.display = 'none';
-            iframeContent.src = '';
-        }
-    </script>
+        iframeContainer.style.display = 'none';
+        iframeContent.src = '';
+
+        // Clear the previous content to prevent flickering
+        iframeContent.src = 'about:blank';
+    }
+</script>
 </body>
 
 </html>
